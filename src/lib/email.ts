@@ -35,7 +35,7 @@ export async function sendLeadNotification(lead: LeadEmailData): Promise<{ succe
   try {
     console.log("[EMAIL] Attempting to send email to:", adminEmail)
     const { data, error } = await resend.emails.send({
-      from: "WebMagic PH <onboarding@resend.dev>", // Use your verified domain in production
+      from: adminEmail, // Using verified email as sender
       to: adminEmail,
       subject: `New Lead: ${lead.business_name}`,
       html: `
