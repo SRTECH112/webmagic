@@ -18,17 +18,22 @@ interface LeadEmailData {
 }
 
 export async function sendLeadNotification(lead: LeadEmailData): Promise<{ success: boolean; error?: string }> {
+  console.log("[EMAIL] Starting email send process...")
+  console.log("[EMAIL] Resend configured:", !!resend)
+  console.log("[EMAIL] Admin email:", adminEmail)
+  
   if (!resend) {
-    console.warn("Resend not configured - skipping email")
+    console.error("[EMAIL] ERROR: Resend not configured - skipping email")
     return { success: false, error: "Email service not configured" }
   }
 
   if (!adminEmail) {
-    console.warn("ADMIN_EMAIL not set - skipping email")
+    console.error("[EMAIL] ERROR: ADMIN_EMAIL not set - skipping email")
     return { success: false, error: "Admin email not configured" }
   }
 
   try {
+    console.log("[EMAIL] Attempting to send email to:", adminEmail)
     const { data, error } = await resend.emails.send({
       from: "WebMagic PH <onboarding@resend.dev>", // Use your verified domain in production
       to: adminEmail,
@@ -47,13 +52,14 @@ export async function sendLeadNotification(lead: LeadEmailData): Promise<{ succe
     })
 
     if (error) {
-      console.error("Resend error:", error)
+      console.error("[EMAIL] Resend API error:", error)
       return { success: false, error: error.message }
     }
 
+    console.log("[EMAIL] Email sent successfully!", data)
     return { success: true }
   } catch (err) {
-    console.error("Email send error:", err)
+    console.error("[EMAIL] Exception during email send:", err)
     return { success: false, error: "Failed to send email" }
   }
 }
