@@ -54,10 +54,10 @@ export async function POST(request: Request) {
       )
     }
 
-    // Send email notification (non-blocking)
-    sendLeadNotification(leadData).catch((err) => {
-      console.error("Email notification failed:", err)
-    })
+    // Send email notification
+    console.log("[API] Sending email notification...")
+    const emailResult = await sendLeadNotification(leadData)
+    console.log("[API] Email result:", emailResult)
 
     return NextResponse.json(
       { success: true, message: "Lead submitted successfully", id: data.id },
