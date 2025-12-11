@@ -1,5 +1,3 @@
-import Image from "next/image"
-import Link from "next/link"
 import { ExternalLink } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
@@ -23,7 +21,7 @@ export function PortfolioCard({ project }: PortfolioCardProps) {
     <Card className="overflow-hidden transition-all hover:shadow-lg dark:hover:shadow-primary/20 group h-full flex flex-col">
       <div className="relative aspect-video w-full overflow-hidden bg-muted">
         {/* Placeholder for image */}
-        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-muted to-accent text-muted-foreground">
+        <div className="absolute inset-0 flex items-center justify-center bg-linear-to-br from-muted to-accent text-muted-foreground">
             {project.image ? (
                  // eslint-disable-next-line @next/next/no-img-element
                 <img src={project.image} alt={project.title} className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105" />
@@ -39,7 +37,7 @@ export function PortfolioCard({ project }: PortfolioCardProps) {
         </div>
         <CardDescription className="line-clamp-2">{project.description}</CardDescription>
       </CardHeader>
-      <CardContent className="flex-grow">
+      <CardContent className="grow">
         <div className="flex flex-wrap gap-2">
           {project.tags.map((tag) => (
             <Badge key={tag} variant="outline" className="text-[10px]">
@@ -50,7 +48,9 @@ export function PortfolioCard({ project }: PortfolioCardProps) {
       </CardContent>
       <CardFooter>
         <Button asChild className="w-full" variant="outline">
-          <Link href={`/portfolio/${project.id}`}>View Case Study</Link>
+          <a href={project.link || "#"} target="_blank" rel="noopener noreferrer">
+            Visit Website <ExternalLink className="ml-2 h-4 w-4" />
+          </a>
         </Button>
       </CardFooter>
     </Card>

@@ -7,7 +7,7 @@ export function Footer() {
       <div className="container mx-auto py-10 px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
-            <h3 className="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary dark:from-white dark:to-secondary">
+            <h3 className="text-lg font-bold bg-clip-text text-transparent bg-linear-to-r from-primary to-secondary dark:from-white dark:to-secondary">
               WebMagic PH
             </h3>
             <p className="text-sm text-muted-foreground">
@@ -24,7 +24,6 @@ export function Footer() {
             <h4 className="font-semibold mb-4">Company</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li><Link href="/about" className="hover:text-primary">About Us</Link></li>
-              <li><Link href="/portfolio" className="hover:text-primary">Portfolio</Link></li>
               <li><Link href="/contact" className="hover:text-primary">Contact</Link></li>
             </ul>
           </div>

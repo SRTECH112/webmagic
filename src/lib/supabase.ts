@@ -17,16 +17,6 @@ export const supabase = createClient(supabaseUrl, supabaseServiceKey, {
 })
 
 // Database types
-export interface PortfolioItem {
-  id: string
-  title: string
-  industry: string
-  description: string
-  image_url: string | null
-  live_url: string | null
-  created_at: string
-}
-
 export interface Lead {
   id: string
   business_name: string

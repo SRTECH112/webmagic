@@ -12,32 +12,23 @@ import { PortfolioCard } from "@/components/portfolio-card"
 export default function Home() {
   const featuredProjects: Project[] = [
     {
-      id: "project-1",
-      title: "Project 1",
-      category: "restaurant",
-      description: "Coming soon.",
-      image: "",
-      tags: ["Coming Soon"],
-      link: "#"
+      id: "laundry-shop-name",
+      title: "Laundry Shop ",
+      category: "local business",
+      description: "Premium laundry booking website with instant pricing, same-day pickup, and digital receipts.",
+      image: "https://i.imgur.com/kldzRc1.png",
+      tags: ["Next.js", "Tailwind CSS", "Supabase"],
+      link: "https://laundry-two-zeta.vercel.app/"
     },
     {
-      id: "project-2",
-      title: "Project 2",
+      id: "savore",
+      title: "Savore",
       category: "restaurant",
-      description: "Coming soon.",
-      image: "",
-      tags: ["Coming Soon"],
-      link: "#"
+      description: "Modern restaurant website with beautiful menu showcase and online reservations.",
+      image: "https://i.imgur.com/M9BOeRv.png",
+      tags: ["Next.js", "Tailwind CSS"],
+      link: "https://savore-xi.vercel.app/"
     },
-    {
-      id: "project-3",
-      title: "Project 3",
-      category: "restaurant",
-      description: "Coming soon.",
-      image: "",
-      tags: ["Coming Soon"],
-      link: "#"
-    }
   ]
 
   return (
@@ -53,7 +44,7 @@ export default function Home() {
             transition={{ duration: 0.5 }}
            >
               <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
-                We Build <span className="text-transparent bg-clip-text bg-gradient-to-r from-black to-purple-600 dark:from-white dark:to-secondary">Digital Magic</span> for Your Business
+                We Build <span className="text-transparent bg-clip-text bg-linear-to-r from-black to-purple-600 dark:from-white dark:to-secondary">Digital Magic</span> for Your Business
               </h1>
            </motion.div>
            
@@ -75,8 +66,8 @@ export default function Home() {
             className="flex flex-col gap-4 sm:flex-row justify-center"
            >
               <Button asChild size="lg" className="text-lg h-12 px-8">
-                <Link href="/portfolio">
-                  View Portfolio <ArrowRight className="ml-2 h-5 w-5" />
+                <Link href="#featured">
+                  View Projects <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="text-lg h-12 px-8">
@@ -140,7 +131,7 @@ export default function Home() {
       </Section>
 
       {/* Portfolio Preview */}
-      <Section>
+      <Section id="featured">
         <div className="flex flex-col space-y-12">
           <div className="text-center space-y-4">
             <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">Featured Works</h2>
@@ -161,11 +152,6 @@ export default function Home() {
                  <PortfolioCard project={project} />
                </motion.div>
             ))}
-          </div>
-          <div className="flex justify-center">
-            <Button asChild variant="secondary" size="lg">
-              <Link href="/portfolio">View All Projects</Link>
-            </Button>
           </div>
         </div>
       </Section>
